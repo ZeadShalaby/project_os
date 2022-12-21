@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: my-wep-app
+  
+  template:
+    metadata:
+      name: my-wep-app
+      labels:
+        app: my-wep-app
+    spec:
+      containers:
+        - name: custom-image
+          image: zeadshalaby/zeadweb
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80     
+    
